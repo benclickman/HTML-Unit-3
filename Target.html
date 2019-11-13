@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Target</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/7666c7e4765f71aa338f37e94853d4cc7ed720a0/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Target</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+
+<script>
+window.onload = function() {
+    // This program draws a target that follows the mouse
+	
+function start(){
+	var line1 = new Line(0, 250, 400, 250);
+	var line2 = new Line(200, 0, 200, 500);
+	add(line1);
+	add(line2);
+	mouseMoveMethod(target);
+	
+function target(e){
+	line1.setEndpoint(400, e.getY());
+	line1.setPosition(0, e.getY());
+	line2.setEndpoint(e.getX(), 500);
+	line2.setPosition(e.getX(), 0);
+}
+}
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>

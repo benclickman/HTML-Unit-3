@@ -1,0 +1,86 @@
+  
+<html>
+<head>
+<title>Teleporting Ball</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/7666c7e4765f71aa338f37e94853d4cc7ed720a0/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Teleporting Ball</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+
+<script>
+window.onload = function() {
+    var ball;
+var dx = 4;
+var dy = 4;
+/* This program has a ball bounce around the screen. */
+function start(){
+	ball = new Circle(20);
+	mouseClickMethod(draw);
+	
+	add(ball);
+	
+	setTimer(draw, 20);
+}
+function draw(e){
+	checkWalls();
+	ball.setPosition(e.getX(), e.getY());
+	ball.move(dx, dy);
+	
+}
+function checkWalls(){
+	// Bounce off right wall
+	if(ball.getX() + ball.getRadius() > getWidth()){
+		dx = -dx;
+	}
+	
+	// Bounce off left wall
+	if(ball.getX() - ball.getRadius() < 0){
+		dx = -dx;
+	}
+	
+	// Bounce off bottom wall
+	if(ball.getY() + ball.getRadius() > getHeight()){
+		dy = -dy;
+	}
+	
+	// Bounce off top wall
+	if(ball.getY() - ball.getRadius() < 0){
+		dy = -dy;
+	}
+}
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>Basic Snake</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/7666c7e4765f71aa338f37e94853d4cc7ed720a0/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Basic Snake</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+
+<script>
+window.onload = function() {
+    var SNAKE_WIDTH = 40;
+	var SNAKE_HEIGHT = 40;
+	var SNAKE_COLOR = Color.green;
+	var square;
+	
+// Constants to represent the directions
+var EAST = 0;
+var SOUTH = 1;
+var WEST = 2;
+var NORTH = 3;
+var currentDirection = EAST;
+function start(){
+	square = new Rectangle(40, 40);
+	square.setPosition(200, 250);
+	square.setColor(SNAKE_COLOR);
+	add(square);
+	
+	setTimer(keepMoving, 20);
+	
+	keyDownMethod(keyDown);
+}
+
+function keepMoving(){
+	if(currentDirection == NORTH){
+		square.move(0, -5);
+	}else if(currentDirection == EAST){
+		square.move(5, 0);
+	}else if(currentDirection == SOUTH){
+		square.move(0, 5);
+	}else{
+			square.move(-5, 0);
+	}
+}
+function keyDown(e){
+	if(e.keyCode == Keyboard.LEFT){
+		currentDirection = WEST;
+	}
+	
+	if(e.keyCode == Keyboard.RIGHT){
+		currentDirection = EAST;
+	}
+	
+	if(e.keyCode == Keyboard.UP){
+		currentDirection = NORTH;
+	}
+	
+	if(e.keyCode == Keyboard.DOWN){
+		currentDirection = SOUTH;
+	}
+}
+    if (typeof start === 'function') {
+        start();
+	}
+};
+</script>
+
+</body>
+</html>
